@@ -1,0 +1,8 @@
+export interface newsData {
+  urlToImage: string;
+  title: String;
+  description: String;
+  publishedAt: String;
+  content?: String;
+  author?:String
+}
