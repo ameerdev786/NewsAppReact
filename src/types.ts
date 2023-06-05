@@ -6,3 +6,7 @@ export interface newsData {
   content?: String;
   author?:String
 }
+ export type Data = {
+   news: any;
+   isLoading: Boolean;
+ };
