@@ -2,29 +2,32 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 
 // function for fetching latest news
-export const useFetch = (apiCountry: String, q?: String) => {
+export const useFetch = (apiCountry: String, q?: String, isAllow?: Boolean) => {
   const [news, setNews] = useState<any[]>([]);
   const [isLoading, setLoading] = useState<Boolean>(true);
-  console.log(apiCountry.concat(`&q=${q == undefined ? "it" : q}`), "pppo");
+  console.log(
+    isAllow,
+    "ppmmmmmmmmmmmm",
+  q,
+    "pp"
+  );
 
   const fetchData = async () => {
     try {
       setLoading(true);
       const result = await axios.get(
         `${
-          apiCountry
-            ? apiCountry && q
-              ? apiCountry.concat(`&q=${q}`)
-              : apiCountry
+          apiCountry &&q
+            ? apiCountry.concat(`&q=${q}`)
             : import.meta.env.VITE_API_URL
         }`
       );
       if (result?.data?.articles?.length > 0) {
         setNews(result?.data?.articles);
         setLoading(false);
-      } else {
-        setNews(result?.data?.articles);
-        setLoading(false);
+      }else{
+        setNews([])
+        setLoading(false)
       }
     } catch (error) {
       console.log(error);
@@ -33,6 +36,6 @@ export const useFetch = (apiCountry: String, q?: String) => {
 
   useEffect(() => {
     fetchData();
-  }, [apiCountry]);
+  }, [apiCountry, isAllow]);
   return {news, isLoading};
 };

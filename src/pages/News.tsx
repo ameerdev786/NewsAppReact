@@ -8,9 +8,9 @@ const News = () => {
   // const [news, setNews] = useState<any[]>([]);
   // const [isLoading, setLoading] = useState<Boolean>(true);
   const [apiCountry, setCountryApi] = useState<String>(
-    "https://newsapi.org/v2/top-headlines?country=us&apiKey=458ea16fb7a54950bfac47c1acf430f7"
-  );
-  const {news,isLoading}:Data =useFetch(apiCountry)
+    "https://newsapi.org/v2/top-headlines?country=us&apiKey=b7f74456954b427d83dba732a56f87d5"
+  ); 
+  const {news,isLoading}:Data =useFetch(apiCountry,'',false)
  
   // function for fetching latest news
   // const fetchMovies = async (apiCountry: String) => {
@@ -38,7 +38,10 @@ const News = () => {
 
   return (
     <>
-      <CountryFilter apiCountry={apiCountry} setCountryApi={setCountryApi}  />
+      <CountryFilter
+        apiCountry={apiCountry}
+        setCountryApi={setCountryApi}
+      />
       <ShowNews news={news} isLoading={isLoading} />
     </>
   );

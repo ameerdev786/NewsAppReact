@@ -1,8 +1,9 @@
 interface filterProps {
   setCountryApi: any;
   apiCountry: String;
+  setInput?:any;
 }
-const CountryFilter = ({setCountryApi, apiCountry}: filterProps) => {
+const CountryFilter = ({setCountryApi, apiCountry, setInput}: filterProps) => {
   return (
     <div className="w-11/12  mx-auto px-24 py-4 flex items-center  justify-between">
       <div className="space-x-6">
@@ -13,13 +14,14 @@ const CountryFilter = ({setCountryApi, apiCountry}: filterProps) => {
           from {apiCountry?.includes("us") ? " United State" : "Great Britain"}
         </span>
       </div>
-    
+
       <div className="space-x-2">
         <button
           onClick={() => {
             setCountryApi(
-              "https://newsapi.org/v2/top-headlines?country=gb&apiKey=458ea16fb7a54950bfac47c1acf430f7"
-            );
+              "https://newsapi.org/v2/top-headlines?country=gb&apiKey=b7f74456954b427d83dba732a56f87d5"
+            )
+            setInput('')
           }}
           type="button"
           className="text-white w-16 bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-gray-500 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 "
@@ -29,8 +31,9 @@ const CountryFilter = ({setCountryApi, apiCountry}: filterProps) => {
         <button
           onClick={() => {
             setCountryApi(
-              "https://newsapi.org/v2/top-headlines?country=us&apiKey=458ea16fb7a54950bfac47c1acf430f7"
+              "https://newsapi.org/v2/top-headlines?country=us&apiKey=b7f74456954b427d83dba732a56f87d5"
             );
+            setInput('')
           }}
           type="button"
           className="text-white w-16 bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-gray-500 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 "
